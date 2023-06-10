@@ -4,16 +4,22 @@ $(document).ready(function() {
         const formData = new FormData();
         formData.append('file', file);
 
-        const request = await fetch('https://localhost:7014/PDF/ConvertPDF', {
+        const request = await fetch('https://localhost:7055/PDF/ConvertPDF', {
             method: 'POST',
             body: formData
         });
-
+        let returnString;
         if (request.ok) {
-            const returnString = await request.text(); // Get JSON value from the response body
-            console.log(Promise.resolve(returnString));
+            returnString = await request.text();
         } else {
-            console.log(Promise.reject("file not found"));
+            returnString = await Promise.reject("file not found");
         }
+        document.getElementById("response_text").innerHTML = returnString;
+    });
+
+    
+    $('#file').on('change', function() {
+        var fileName = $(this).val().split('\\').pop();
+        $('#file_name').text(fileName);
     });
 });

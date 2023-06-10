@@ -1,0 +1,16 @@
+#submit{
+    max-width: 150px;
+    font-size: x-large;
+}
+p{
+    font-size: xx-large;
+}
+#file{
+    font-size: large;
+    border-width: 1px;
+    border: 1px;
+}
+textarea{    
+  width: 500px;
+  height: 300px;
+}
